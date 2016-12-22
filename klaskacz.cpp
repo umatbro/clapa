@@ -98,14 +98,14 @@ boolean Klaskacz::doNotListen(int time){
 
 
 boolean Klaskacz::listen() {
-	if(digitalRead(outPin) == LOW){
-	//if(this -> read()) {
+	//if(digitalRead(outPin) == LOW){
+	if(this -> read()) {
 		// switchOn = !switchOn;
 		// return true;
 		// } else {
 		// return false;
-		int timeWindow1 = 1000, 
-		timeWindow2 = 2000,
+		int timeWindow1 = 100, 
+		timeWindow2 = 500,
 		timeWindow3 = 500; // w oknie czasowym mog¹ byæ ready, w oknie czasowym 2 nie mo¿e byæ ¿adnych a w 3 je¿eli siê coœ znajdzie to przestawiæ switcha
 		boolean condition = true;
 		int start;
@@ -137,7 +137,7 @@ boolean Klaskacz::listen() {
 			break;
 		}
 	}
-	
+	this -> read();
 	return switchOn;
 	
 }
