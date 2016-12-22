@@ -117,6 +117,7 @@ boolean Klaskacz::listen() {
 			digitalWrite(3,HIGH);
 			while(millis() - start < timeWindow2){
 				if(this->read()){
+					delay(500);
 					condition = false;
 					break;
 				}

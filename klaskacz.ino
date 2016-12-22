@@ -2,6 +2,8 @@
 
 Dioda listwa(9);
 Klaskacz klaskacz(A5,10);
+Button lock(3);
+boolean locked = false;
 
 void setup(){
 	pinMode(A5,INPUT_PULLUP);
@@ -17,15 +19,18 @@ void setup(){
 
 
 void loop(){
-	// boolean reading = klaskacz.listen();
-	// Serial.println(reading);
-	// if(reading) listwa.changeState();
-	// listwa.update();
-	
-	//Serial.println(klaskacz.listen());
-	klaskacz.listen();
-	
-	listwa.set(klaskacz.getSwitch());
-	listwa.update();
+	if (lock.uniquePress()) locked = !locked;
 
+	
+	if(!locked){
+		klaskacz.listen();
+		
+		listwa.set(klaskacz.getSwitch());
+		listwa.update();
+	}
+	
+	else {
+		listwa.set(true);
+		listwa.update();
+	}
 }
