@@ -139,7 +139,6 @@ boolean Klaskacz::listen() {
 	}
 	this -> read();
 	return switchOn;
-	
 }
 
 boolean Klaskacz::getSwitch(){

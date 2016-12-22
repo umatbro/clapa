@@ -21,7 +21,9 @@ void loop(){
 	// Serial.println(reading);
 	// if(reading) listwa.changeState();
 	// listwa.update();
-	Serial.println(klaskacz.listen());
+	
+	//Serial.println(klaskacz.listen());
+	klaskacz.listen();
 	
 	listwa.set(klaskacz.getSwitch());
 	listwa.update();
