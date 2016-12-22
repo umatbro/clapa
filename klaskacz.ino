@@ -1,25 +1,29 @@
 #include "klaskacz.h"
 
 Dioda listwa(9);
-Klaskacz klaskacz(A5);
+Klaskacz klaskacz(A5,10);
 
 void setup(){
 	pinMode(A5,INPUT_PULLUP);
 	listwa.begin();
 	klaskacz.begin();
 	Serial.begin(9600);
+	digitalWrite(10,HIGH);
+	pinMode(2,OUTPUT);
+	pinMode(3,OUTPUT);
+	pinMode(4,OUTPUT);
+	listwa.set(false);
 }
 
 
 void loop(){
-	// for (int i=0;i<256; i++){
-		// listwa.set(i);
-		// delay(10);
-	// }
-	// for(int i = 255; i>=0; i--){
-		// listwa.set(i);
-		// delay(10);
-	// }
+	// boolean reading = klaskacz.listen();
+	// Serial.println(reading);
+	// if(reading) listwa.changeState();
+	// listwa.update();
+	Serial.println(klaskacz.listen());
 	
-	Serial.println(klaskacz.read());
+	listwa.set(klaskacz.getSwitch());
+	listwa.update();
+
 }
