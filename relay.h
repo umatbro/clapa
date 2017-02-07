@@ -10,6 +10,8 @@ public:
 	void 	set(bool); // sets true/false
 	void 	update();
 	void	changeState();
+	void 	openNormal(); // sets relay in normally opened position
+	void 	closeNormal(); // sets relay on normally closed position
 };
 
 
