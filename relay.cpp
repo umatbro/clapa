@@ -24,6 +24,16 @@ void Relay::changeState(){
 	update();
 }
 
+void Relay::openNormal(){
+	normalState = true;
+	update();
+}
+
+void Relay::closeNormal(){
+	normalState = false;
+	update();
+}
+
 
 
 

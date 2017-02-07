@@ -5,6 +5,8 @@
 #define lockBPin 11
 
 Button lockButton(lockBPin,PULLUP);
+bool deviceLocked = false;
+
 Relay relay;
 
 void setup() {
@@ -12,8 +14,15 @@ void setup() {
 }
 
 void loop() {
-	if(lockButton.uniquePress()){
-		relay.changeState();
+	if(lockButton.uniquePress()) deviceLocked = !deviceLocked;
+	
+	switch(deviceLocked) {
+		case true:
+			relay.openNormal();
+			break;
+		case false:
+			relay.closeNormal();
+			break;
 	}
 	delay(35);
 }
