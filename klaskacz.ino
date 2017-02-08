@@ -15,6 +15,7 @@ LM393 mikro;
 Relay relay;
 
 void setup() {
+	delay(300);
 	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
 	
