@@ -1,5 +1,6 @@
 #include "relay.h"
 #include "Button.h"
+#include "LM393.h"
 
 #define relPin 10
 #define lockBPin 11
@@ -37,7 +38,6 @@ void loop() {
 				break;
 		}
 	}
-	delay(35);
 }
 
 
