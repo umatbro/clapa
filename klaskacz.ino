@@ -26,7 +26,8 @@ void setup() {
 void loop() {
 	if(lockButton.uniquePress()) {
 		deviceLocked = !deviceLocked;
-		
+		delay(30);
+	}
 		switch(deviceLocked) {
 			case true:
 				digitalWrite(lockLED,HIGH);
@@ -37,7 +38,7 @@ void loop() {
 				digitalWrite(lockLED,LOW);
 				break;
 		}
-	}
+	
 }
 
 
