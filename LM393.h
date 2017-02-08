@@ -10,7 +10,7 @@ private:
 	int 	fadeTime;
 	
 public:
-	LM393(int = 0, int = 200, int = 100);
+	LM393(int = 0, int = 150, int = 250);
 	void begin(int);
 	void begin(int, int, int);
 	bool readSignal();
