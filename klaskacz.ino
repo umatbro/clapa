@@ -1,5 +1,6 @@
 #include "relay.h"
 #include "Button.h"
+#include "LM393.h"
 
 #define relPin 10
 #define lockBPin 11
@@ -14,6 +15,7 @@ LM393 mikro;
 Relay relay;
 
 void setup() {
+	Serial.begin(9600);
 	mikro.begin(LM393Pin);
 	
 	relay.begin(relPin);
@@ -23,21 +25,22 @@ void setup() {
 }
 
 void loop() {
-	if(lockButton.uniquePress()) {
+	if(lockButton.uniquePress()) 
 		deviceLocked = !deviceLocked;
 		
-		switch(deviceLocked) {
-			case true:
-				digitalWrite(lockLED,HIGH);
-				relay.openNormal();
-				break;
-			case false:
-				relay.update();
-				digitalWrite(lockLED,LOW);
-				break;
-		}
+	switch(deviceLocked) {
+		case true:
+			digitalWrite(lockLED,HIGH);
+			relay.openNormal();
+			break;
+		case false:
+			relay.update();
+			Serial.println(mikro.signalOut());
+			digitalWrite(lockLED,LOW);
+			break;
 	}
-	delay(35);
+	
+	//~ delay(35);
 }
 
 
