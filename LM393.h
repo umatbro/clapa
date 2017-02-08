@@ -20,6 +20,7 @@ public:
 	bool getSwitchState();
 	void setLedPin(int);
 	bool correctClap();
+	int countClaps();
 	void listen(); //desc in function body
 	
 };

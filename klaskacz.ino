@@ -1,4 +1,4 @@
-#include "relay.h"
+ #include "relay.h"
 #include "Button.h"
 #include "LM393.h"
 
@@ -17,7 +17,9 @@ Relay relay;
 void setup() {
 	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
-	mikro.setTimeout(1337);
+	mikro.setFadeTime(40);
+	mikro.setTimeout(250);
+	mikro.setTimeWindow(300);
 	
 	relay.begin(relPin);
 	relay.update();
@@ -27,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-	Serial.println( mikro.correctClap() );
+	Serial.println( mikro.countClaps() );
 	
 }
 
