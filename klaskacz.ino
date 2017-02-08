@@ -17,7 +17,7 @@ Relay relay;
 void setup() {
 	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
-	mikro.setTimeout(1500);
+	mikro.setTimeout(500);
 	
 	relay.begin(relPin);
 	relay.update();
