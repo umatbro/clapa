@@ -2,6 +2,7 @@
 
 LM393::LM393(int pin) {
 	outPin = pin;
+	deviceOn = false;
 }
 
 void LM393::begin(int pin) {
