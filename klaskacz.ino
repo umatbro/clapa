@@ -17,7 +17,6 @@ Relay relay;
 void setup() {
 	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
-	mikro.setTimeout(500);
 	
 	relay.begin(relPin);
 	relay.update();
@@ -36,10 +35,11 @@ void loop() {
 			relay.openNormal();
 			break;
 		case false:
+			relay.update();
 			digitalWrite(lockLED,LOW);
-			mikro.listen();
-			delay(5);
-			relay.set(mikro.getSwitchState());
+			int claps = mikro.countClaps();
+			if (claps == 2 || claps == 3)
+				relay.changeState();
 			break;
 	}
 	

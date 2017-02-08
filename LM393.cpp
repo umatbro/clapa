@@ -5,7 +5,7 @@ LM393::LM393(int pin, int timeout, int timeWindow) {
 	deviceOn = false;
 	setTimeout(timeout);
 	setTimeWindow(timeWindow);
-	fadeTime = 30;
+	fadeTime = 40;
 }
 
 //begin with only pin, use default timeout and timeWindow values
