@@ -15,32 +15,20 @@ LM393 mikro;
 Relay relay;
 
 void setup() {
-	Serial.begin(9600);
+	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
+	mikro.setTimeout(1337);
 	
 	relay.begin(relPin);
 	relay.update();
 	
 	pinMode(lockLED,OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
-	if(lockButton.uniquePress()) 
-		deviceLocked = !deviceLocked;
-		
-	switch(deviceLocked) {
-		case true:
-			digitalWrite(lockLED,HIGH);
-			relay.openNormal();
-			break;
-		case false:
-			relay.update();
-			Serial.println(mikro.signalOut());
-			digitalWrite(lockLED,LOW);
-			break;
-	}
+	Serial.println( mikro.correctClap() );
 	
-	//~ delay(35);
 }
 
 

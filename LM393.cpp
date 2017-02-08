@@ -65,7 +65,18 @@ bool LM393::correctClap(){
 	//wyczekanie baunsowania
 	delay(fadeTime);
 	
+	//sprawdzenie czy nie ma hałasu
+	startTime = millis();
+	while ( millis() - startTime < timeout ) {
+		if ( readSignal() ) { //jeśli pojawi się sygnał to kasuj
+			result = false;
+		}
+	}
 	
+	//zgaszenie diodki sygnalizującej 
+	digitalWrite(communicationLedPin, LOW);
+	
+	return result;
 }
 
 void LM393::listen() { 
