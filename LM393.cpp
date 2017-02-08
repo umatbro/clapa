@@ -69,7 +69,19 @@ bool LM393::correctClap(){
 	startTime = millis();
 	while ( millis() - startTime < timeout ) {
 		if ( readSignal() ) { //jeśli pojawi się sygnał to kasuj
+			digitalWrite(communicationLedPin,HIGH);
+			delay(200);
+			digitalWrite(communicationLedPin,LOW);
+			delay(200);
+			digitalWrite(communicationLedPin,HIGH);
+			delay(200);
+			digitalWrite(communicationLedPin,LOW);
+			delay(200);
+			digitalWrite(communicationLedPin,HIGH);
+			delay(200);
+			digitalWrite(communicationLedPin,LOW);
 			result = false;
+			
 		}
 	}
 	
