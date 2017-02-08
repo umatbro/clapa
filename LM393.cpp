@@ -52,7 +52,7 @@ bool LM393::correctClap(){
 	
 	//czeka na dźwięk przez czas timeWindow
 	while ( millis() - startTime < timeWindow ) {
-		if ( readSignal() ) { 
+		if ( readSignal() ) {
 			result = true; break; }
 	}
 	
@@ -70,10 +70,20 @@ bool LM393::correctClap(){
 	while ( millis() - startTime < timeout ) {
 		if ( readSignal() ) { //jeśli pojawi się sygnał to kasuj
 			result = false;
-			break;
 		}
 	}
 	
+	//zgaszenie diodki sygnalizującej 
+	digitalWrite(communicationLedPin, LOW);
+	
+	return result;
+}
+
+int LM393::countClaps(){
+	int result=0;
+	while (correctClap()){
+		result++;
+	}
 	return result;
 }
 
