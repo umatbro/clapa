@@ -1,8 +1,8 @@
 #include "relay.h"
 
-Relay::Relay(){
-	normalState = true;
-	pin = 10;
+Relay::Relay(int pin){
+	normalState = false;
+	this->pin = pin;
 }
 
 void Relay::begin(int pin){
@@ -25,13 +25,15 @@ void Relay::changeState(){
 }
 
 void Relay::openNormal(){
-	normalState = true;
-	update();
+	//normalState = true;
+	digitalWrite(pin,HIGH);
+	//update();
 }
 
 void Relay::closeNormal(){
-	normalState = false;
-	update();
+	digitalWrite(pin,LOW);
+	//~ normalState = false;
+	//~ update();
 }
 
 

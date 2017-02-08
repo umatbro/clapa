@@ -5,7 +5,7 @@ private:
 	int 	pin;
 	bool 	normalState;
 public:
-			Relay();
+			Relay(int = 10);
 	void 	begin(int); // sets Arduino pin to output
 	void 	set(bool); // sets true/false
 	void 	update();
