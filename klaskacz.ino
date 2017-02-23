@@ -20,8 +20,8 @@ void setup() {
 	mikro.setLedPin(lockLED);
 	mikro.begin(LM393Pin);
 	
-	//na początku normaly open.
-	relay.set(HIGH);
+	//na początku normaly closed.
+	relay.set(LOW);
 	
 	relay.begin(relPin);
 	relay.update();
