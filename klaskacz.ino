@@ -43,9 +43,9 @@ void loop() {
 			relay.update();
 			digitalWrite(lockLED,LOW);
 			int claps = mikro.countClaps();
-			if (claps == 2 )
+			if (claps == 3 )
 				relay.set(HIGH);
-			if ( claps == 3 ) {
+			if ( claps == 2 ) {
 				relay.set(LOW);
 			}	
 			break;
