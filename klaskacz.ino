@@ -43,10 +43,4 @@ void loop() {
 				relay.changeState();
 			break;
 	}
-	
 }
-
-
-
-
-
