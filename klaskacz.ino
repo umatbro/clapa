@@ -7,6 +7,9 @@
 #define lockLED 12
 #define LM393Pin A0
 
+#define CLAPS_ON 3
+#define CLAPS_OFF 2
+
 Button lockButton(lockBPin,PULLUP);
 bool deviceLocked = false;
 
@@ -43,9 +46,9 @@ void loop() {
 			relay.update();
 			digitalWrite(lockLED,LOW);
 			int claps = mikro.countClaps();
-			if (claps == 3 )
+			if (claps == CLAPS_ON )
 				relay.set(HIGH);
-			if ( claps == 2 ) {
+			if ( claps == CLAPS_OFF ) {
 				relay.set(LOW);
 			}	
 			break;
